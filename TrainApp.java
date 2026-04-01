@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class TrainApp {
@@ -84,5 +86,20 @@ public class TrainApp {
         
         // Display the final formation order
         System.out.println("Final Train Formation: " + formation);
+        
+        // UC6: Map Bogie to Capacity (HashMap)
+        System.out.println("\n--- UC6: Map Bogie to Capacity (HashMap) ---");
+        Map<String, Integer> capacityMap = new HashMap<>();
+        
+        // Insert capacity values for bogies
+        capacityMap.put("Sleeper", 72);
+        capacityMap.put("AC Chair", 78);
+        capacityMap.put("First Class", 24);
+        
+        // Iterate over the map using entrySet() and display capacity
+        System.out.println("Bogie Capacities:");
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue() + " seats");
+        }
     }
 }
