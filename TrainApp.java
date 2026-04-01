@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -6,6 +7,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+class Bogie {
+    String name;
+    int capacity;
+    
+    public Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+    
+    @Override
+    public String toString() {
+        return name + " (" + capacity + " seats)";
+    }
+}
 
 public class TrainApp {
     public static void main(String[] args) {
@@ -93,13 +109,34 @@ public class TrainApp {
         
         // Insert capacity values for bogies
         capacityMap.put("Sleeper", 72);
-        capacityMap.put("AC Chair", 78);
+        capacityMap.put("AC Chair", 56);
         capacityMap.put("First Class", 24);
         
         // Iterate over the map using entrySet() and display capacity
         System.out.println("Bogie Capacities:");
         for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue() + " seats");
+        }
+        
+        // UC7: Sort Bogies by Capacity (Comparator)
+        System.out.println("\n--- UC7: Sort Bogies by Capacity (Comparator) ---");
+        List<Bogie> bogieList = new ArrayList<>();
+        bogieList.add(new Bogie("Sleeper", 72));
+        bogieList.add(new Bogie("AC Chair", 56));
+        bogieList.add(new Bogie("First Class", 24));
+        bogieList.add(new Bogie("General", 90));
+        
+        // Sort using a custom Comparator (Descending order: High capacity first)
+        bogieList.sort(new Comparator<Bogie>() {
+            @Override
+            public int compare(Bogie b1, Bogie b2) {
+                return Integer.compare(b2.capacity, b1.capacity);
+            }
+        });
+        
+        System.out.println("Bogies sorted by capacity (High to Low):");
+        for (Bogie b : bogieList) {
+            System.out.println(b);
         }
     }
 }
