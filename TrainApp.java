@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -67,5 +68,21 @@ public class TrainApp {
         
         // Display the final ordered train consist.
         System.out.println("Final ordered train consist after removals: " + consist);
+        
+        // UC5: Preserve Insertion Order of Bogies (LinkedHashSet)
+        System.out.println("\n--- UC5: Preserve Insertion Order (LinkedHashSet) ---");
+        Set<String> formation = new LinkedHashSet<>();
+        
+        // Attach bogies such as: Engine, Sleeper, Cargo, Guard.
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        
+        // Attempt to attach a duplicate bogie intentionally
+        formation.add("Sleeper"); 
+        
+        // Display the final formation order
+        System.out.println("Final Train Formation: " + formation);
     }
 }
